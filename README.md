@@ -11,9 +11,13 @@
 ## Web application of personal diary
 
 ### Описание
-Проект реализует бэкенд и фронтенд веб-приложения для ведения личного дневника.
+Проект реализует бэкенд и фронтенд веб-приложения для ведения личного дневника.  
 Inspired by https://dayone.me
 
 ### Требования
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Доступ и работа с приложением
+- Главная: http://localhost:8000/
+- Админка: http://localhost:8000/admin/
