@@ -12,3 +12,8 @@ class Entry(models.Model):
 
     def __str__(self):
         return f'"{self.title}" (дата создания: {self.created_at})'
+
+    class Meta:
+        verbose_name = 'запись'
+        verbose_name_plural = 'записи'
+        ordering = ('created_at',)
