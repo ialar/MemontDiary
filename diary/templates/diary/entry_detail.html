@@ -1,0 +1,26 @@
+{% extends 'diary/base.html' %}
+
+{% block content %}
+<div class="col-12">
+    <div class="row">
+        <div class="col-4 offset-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ object.title }}</h4>
+                </div>
+                <div class="card-body">
+                    <p>{{ object.text }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="{% url 'diary:entry_update' object.pk %}" type="button"
+                               class="btn btn-sm btn-outline-secondary">Edit</a>
+                            <a href="{% url 'diary:entry_delete' object.pk %}" type="button"
+                               class="btn btn-sm btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
