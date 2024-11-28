@@ -5,15 +5,16 @@ NULLABLE = {'null': 'True', 'blank': 'True'}
 
 
 class Entry(models.Model):
-    title = models.CharField(max_length=200, verbose_name='Заголовок')
-    text = models.TextField(verbose_name='Текст записи')
-    image = models.ImageField(upload_to='diary_images/', verbose_name='Изображение', **NULLABLE)
-    created_at = models.DateTimeField(default=timezone.now, verbose_name='Дата публикации')
+    title = models.CharField(max_length=200, verbose_name='Title')
+    text = models.TextField(verbose_name='Text')
+    image = models.ImageField(upload_to='diary_images/', verbose_name='Image', **NULLABLE)
+    created_at = models.DateTimeField(default=timezone.now, verbose_name='Date')
+    is_public = models.BooleanField(default=False, verbose_name="Public")
 
     def __str__(self):
-        return f'"{self.title}" (дата создания: {self.created_at})'
+        return f'"{self.title}" (added: {self.created_at})'
 
     class Meta:
-        verbose_name = 'запись'
-        verbose_name_plural = 'записи'
+        verbose_name = 'entry'
+        verbose_name_plural = 'entries'
         ordering = ('created_at',)
