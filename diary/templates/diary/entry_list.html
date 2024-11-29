@@ -1,24 +1,71 @@
 {% extends 'diary/base.html' %}
 
 {% block content %}
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-    {% for object in object_list %}
-    <div class="col-4">
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
-                <h5 class="my-0 fw-normal">{{ object.title }}</h5>
-                <span class="text-muted">{{ object.created_at }}</span>
-            </div>
-            <div class="card-body">
-                <h6 class="card-title pricing-card-title">{{ object.text|slice:':101' }}</h6>
-                <ul class="list-unstyled mt-3 mb-4">
-<!--                    <li>Author: {{ object.owner }}</li>-->
-                </ul>
-                <a class="w-50 btn btn-sm btn-outline-primary mb-2"
-                   href="{% url 'diary:entry_detail' object.pk %}">View</a>
-            </div>
+<style>
+    .card {
+        transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход */
+        height: 100%; /* Устанавливаем высоту карточки на 100% */
+    }
+
+    .card:hover {
+        background-color: #343a40; /* Цвет фона при наведении (темный) */
+        color: white; /* Цвет текста при наведении (белый) */
+    }
+
+    .card-link {
+        text-decoration: none; /* Убираем подчеркивание текста */
+        color: inherit; /* Убираем изменение цвета текста по умолчанию */
+        height: 100%; /* Устанавливаем высоту на 100% */
+    }
+
+    .custom-col {
+        padding: 2rem; /* Устанавливаем отступы между карточками */
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column; /* Устанавливаем вертикальное размещение элементов */
+        flex-grow: 1; /* Позволяем телу карточки занимать доступное пространство */
+    }
+
+    .icon-small {
+        font-size: 0.75rem; /* Уменьшаем размер иконки */
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-4 mb-3 text-center">
+        {% for object in object_list %}
+        <div class="col-md-3 custom-col d-flex">
+            <a href="{% url 'diary:entry_detail' object.pk %}" class="card-link">
+                <div class="card mb-4 rounded-5 shadow-sm" style="width: 100%; overflow: hidden;">
+                    <div class="card-header py-3" style="border-radius: 0.5rem 0.5rem 0 0;">
+                        <h5 class="my-0 fw-normal">{{ object.title }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title pricing-card-title"
+                            style="font-size: 0.95rem; font-weight: normal;
+                            text-align: left; margin: 0 0 1rem 0; text-indent: 1rem;">
+                            {{ object.text|slice:':201' }} ...</h6>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <!-- <li>Author: {{ object.owner }}</li> -->
+                        </ul>
+                        <div class="d-flex justify-content-between mt-3">
+                            <span class="text-muted small">Added at {{ object.created_at }}</span>
+                            <span class="text-muted small">
+                                Public:
+                                {% if object.is_public %}
+                                    <i class="far fa-check-circle icon-small"></i>
+                                {% else %}
+                                    <i class="far fa-times-circle icon-small"></i>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
