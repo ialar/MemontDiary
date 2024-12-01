@@ -89,15 +89,30 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
             display: block !important;
         }
+        .btn.rounded {
+            border-radius: 2rem !important;
+        }
+        .rounded {
+            border-radius: 2rem !important;
+        }
+        .form-control {
+            border-radius: 2rem !important;
+        }
+        .card {
+            border-radius: 2rem !important;
+        .card-header {
+            border-top-left-radius: 2rem !important;
+            border-top-right-radius: 2rem !important;
+        }
     </style>
 </head>
 
 <body>
 <header data-bs-theme="dark">
     {% include 'diary/includes/nav_bar.html' %}
-    <div class="pricing-header m-4 mx-auto text-center">
-        <h5>{{ title }}</h5>
-    </div>
+<!--    <div class="pricing-header m-4 mx-auto text-center">-->
+<!--        <h5>{{ title }}</h5>-->
+<!--    </div>-->
 </header>
 
 <main>

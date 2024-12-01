@@ -40,7 +40,7 @@
             <a href="{% url 'diary:entry_detail' object.pk %}" class="card-link">
                 <div class="card mb-4 rounded-5 shadow-sm" style="width: 100%; overflow: hidden;">
                     <div class="card-header py-3" style="border-radius: 0.5rem 0.5rem 0 0;">
-                        <h5 class="my-0 fw-normal">{{ object.title }}</h5>
+                        <h5 class="my-0 fw-normal">{{ object.title|title }}</h5>
                     </div>
                     <div class="card-body">
                         <h6 class="card-title pricing-card-title"
@@ -48,7 +48,7 @@
                             text-align: left; margin: 0 0 1rem 0; text-indent: 1rem;">
                             {{ object.text|slice:':201' }} ...</h6>
                         <ul class="list-unstyled mt-3 mb-4">
-                            <!-- <li>Author: {{ object.owner }}</li> -->
+<!--                             <li>Author: {{ object.owner }}</li>-->
                         </ul>
                         <div class="d-flex justify-content-between mt-3">
                             <span class="text-muted small">Added at {{ object.created_at }}</span>
