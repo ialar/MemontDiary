@@ -1,0 +1,18 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+<div class="d-flex justify-content-center">
+    <div class="d-flex align-items-center justify-content-center" style="height: 60vh;">
+        <div class="card w-50">
+            <div class="card-body">
+                <form class="row g-1" method="post" enctype="multipart/form-data" style="padding: 20px;">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-secondary rounded w-50">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
