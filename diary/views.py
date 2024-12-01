@@ -3,18 +3,12 @@ from django.views.generic import TemplateView, ListView, CreateView, UpdateView,
 
 from diary.forms import EntryForm
 from diary.models import Entry
-from diary.services import get_current_date
 
 
 class Index(TemplateView):
     model = Entry
     template_name = 'diary/index.html'
     # extra_context = {'title': 'Memont diary'}
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['formatted_current_date'] = get_current_date()
-        return context
 
 
 class EntryListView(ListView):
