@@ -10,9 +10,9 @@
     <meta name="generator" content="Hugo 0.122.0">
     <title>Memont</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -103,33 +103,36 @@
         .card-header {
             border-top-left-radius: 2rem !important;
             border-top-right-radius: 2rem !important;
-        }
     </style>
 </head>
 
 <body>
 <header data-bs-theme="dark">
     {% include 'diary/includes/nav_bar.html' %}
-<!--    <div class="pricing-header m-4 mx-auto text-center">-->
-<!--        <h5>{{ title }}</h5>-->
-<!--    </div>-->
 </header>
 
 <main>
-    {% block content %}
-    {% endblock %}
+    <div class="content" style="margin-top: 60px;">
+        {% block content %}
+        {% endblock %}
+    </div>
 </main>
 
-<footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; {% now 'Y' %} Memont &middot; <a href="https://sky.pro/" target="_blank"
-                                               rel="noopener noreferrer">Skypro</a></p>
+<footer class="container d-flex justify-content-between align-items-center mt-3">
+    <p class="mb-1">
+        <a href="https://sky.pro/" target="_blank" rel="noopener noreferrer">Skypro</a>
+    </p>
+    <p class="mb-1">
+        &copy; {% now 'Y' %} Memont
+    </p>
+    <p class="mb-1 float-end">
+        <a href="#">Back to top</a>
+    </p>
 </footer>
 
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
-<script src="/docs/5.3/assets/js/color-modes.js"></script>
 </body>
 </html>

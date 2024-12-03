@@ -1,4 +1,5 @@
 {% extends 'diary/base.html' %}
+{% load my_tags %}
 
 {% block content %}
 <div class="col-12">
@@ -6,16 +7,23 @@
         <div class="col-4 offset-4">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">{{ object.title|title }}</h4>
+                    <h6 class="my-0 font-weight-normal text-center">{{ entry.title }}</h6>
                 </div>
+                {% if object.image %}
+                <img class="card-img-top" src="{% my_media_tag entry.image %}" alt="Card image cap">
+                {% endif %}
                 <div class="card-body">
-                    <p>{{ object.text }}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a href="{% url 'diary:entry_update' object.pk %}" type="button"
-                               class="btn btn-sm btn-outline-secondary">Edit</a>
-                            <a href="{% url 'diary:entry_delete' object.pk %}" type="button"
-                               class="btn btn-sm btn-outline-danger">Delete</a>
+                    <p>{{ entry.text }}</p>
+                    <div class="d-flex justify-content-center">
+                        <div class="d-flex" style="width: 100%;">
+                            {% if user.is_superuser or user == entry.owner %}
+                            <a href="{% url 'diary:entry_update' entry.pk %}" type="button"
+                               class="btn btn-outline-secondary rounded w-25 me-3">Edit</a>
+                            <a href="{% url 'diary:entry_delete' entry.pk %}" type="button"
+                               class="btn btn-outline-secondary rounded w-25 me-3">Delete</a>
+                            {% endif %}
+                            <a href="#" type="button"
+                               class="btn btn-outline-secondary rounded w-25">Comment</a>
                         </div>
                     </div>
                 </div>

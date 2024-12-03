@@ -4,6 +4,9 @@
     <div class="d-flex align-items-center justify-content-center" style="height: 60vh;">
         <div class="card w-50">
             <div class="card-body">
+                <div class="text-center nth-card-title mt-2">
+                <h5>Create an account in Memont</h5>
+            </div>
                 <form class="row g-1" method="post" enctype="multipart/form-data" style="padding: 20px;">
                     {% csrf_token %}
                     {{ form.as_p }}
