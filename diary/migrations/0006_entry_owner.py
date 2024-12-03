@@ -8,15 +8,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('diary', '0005_alter_entry_options_entry_is_public'),
+        ("diary", "0005_alter_entry_options_entry_is_public"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='entry',
-            name='owner',
-            field=models.ForeignKey(blank='True', null='True', on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='Owner'),
-            preserve_default='True',
+            model_name="entry",
+            name="owner",
+            field=models.ForeignKey(
+                blank="True",
+                null="True",
+                on_delete=django.db.models.deletion.SET_NULL,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Owner",
+            ),
+            preserve_default="True",
         ),
     ]

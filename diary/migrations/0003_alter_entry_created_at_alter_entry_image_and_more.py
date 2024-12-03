@@ -7,28 +7,41 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('diary', '0002_alter_entry_options'),
+        ("diary", "0002_alter_entry_options"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='entry',
-            name='created_at',
-            field=models.DateTimeField(default=django.utils.timezone.now, verbose_name='Date'),
+            model_name="entry",
+            name="created_at",
+            field=models.DateTimeField(
+                default=django.utils.timezone.now, verbose_name="Date"
+            ),
         ),
         migrations.AlterField(
-            model_name='entry',
-            name='image',
-            field=models.ImageField(blank='True', null='True', upload_to='diary_images/', verbose_name='Image'),
+            model_name="entry",
+            name="image",
+            field=models.ImageField(
+                blank="True",
+                null="True",
+                upload_to="diary_images/",
+                verbose_name="Image",
+            ),
         ),
         migrations.AlterField(
-            model_name='entry',
-            name='text',
-            field=models.TextField(help_text='Feel free to write...', verbose_name='Text'),
+            model_name="entry",
+            name="text",
+            field=models.TextField(
+                help_text="Feel free to write...", verbose_name="Text"
+            ),
         ),
         migrations.AlterField(
-            model_name='entry',
-            name='title',
-            field=models.CharField(help_text='Enter the title here...', max_length=200, verbose_name='Title'),
+            model_name="entry",
+            name="title",
+            field=models.CharField(
+                help_text="Enter the title here...",
+                max_length=200,
+                verbose_name="Title",
+            ),
         ),
     ]

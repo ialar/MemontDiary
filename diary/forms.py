@@ -10,13 +10,13 @@ class StyleFormMixin(forms.Form):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             if isinstance(field, BooleanField):
-                field.widget.attrs['class'] = 'form-check-input rounded'
+                field.widget.attrs["class"] = "form-check-input rounded"
             else:
-                field.widget.attrs['class'] = 'form-control rounded'
+                field.widget.attrs["class"] = "form-control rounded"
 
 
 class EntryForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Entry
         # fields = '__all__'
-        exclude = ('created_at', 'owner')
+        exclude = ("created_at", "owner")
