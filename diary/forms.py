@@ -19,4 +19,4 @@ class EntryForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Entry
         # fields = '__all__'
-        exclude = ('created_at',)
+        exclude = ('created_at', 'owner')
