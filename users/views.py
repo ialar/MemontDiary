@@ -31,7 +31,7 @@ class UserCreateView(CreateView):
 
         send_mail(
             "Регистрация на сайте Memont",
-            f"""Подтвердите свой профиль, перейдя по ссылке\n 
+            f"""Подтвердите свой профиль, перейдя по ссылке\n
                   http://{current_host}/users/register/confirm/{code}/""",
             EMAIL_HOST_USER,
             [user.email],
