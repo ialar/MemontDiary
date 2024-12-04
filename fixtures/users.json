@@ -1,0 +1,78 @@
+[
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$w6zKVhHdicCAUZUOhs5Dal$NhDl/jeH57BancKAdY9cboqb0nThrmVkOw8v4YEQTiA=",
+        "last_login": "2024-12-03T20:05:48.473Z",
+        "is_superuser": true,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-12-01T16:40:59.721Z",
+        "email": "admin@admin.com",
+        "avatar": "",
+        "verification_code": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$kyTK2gtjzq8Dtbj54FhVPV$LBzrul//T19imR0GlduhBTX9lJT/Zmp64cs0g1EqgL8=",
+        "last_login": "2024-12-03T10:47:33.161Z",
+        "is_superuser": false,
+        "first_name": "Igor",
+        "last_name": "Larionov",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-12-01T19:44:04.746Z",
+        "email": "larionovbox@yandex.ru",
+        "avatar": "user_pictures/Скриншот_09-06-2024_160432.jpg",
+        "verification_code": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$kFFfQTUtXncZwW6RgpiUi5$zQ5/w4oUx6QKtEpCb59cteoJQS2TFyYqrwVk502e934=",
+        "last_login": "2024-12-03T16:07:58.491Z",
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-12-02T11:39:45.315Z",
+        "email": "jedialar@gmail.com",
+        "avatar": "",
+        "verification_code": "2158437743",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$WYKxqwzlO6DTxM66LnHJHL$8BNzGWi6O/1RMdh2sM2/sQUWf+HepBlr1ReRS9p7HFo=",
+        "last_login": "2024-12-03T20:16:05.914Z",
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-12-03T20:06:42.147Z",
+        "email": "ialar@bk.ru",
+        "avatar": "",
+        "verification_code": "0158420404",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
