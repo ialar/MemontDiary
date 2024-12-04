@@ -3,7 +3,7 @@ from django.views.decorators.cache import cache_page
 
 from diary.apps import DiaryConfig
 from diary.views import (EntryCreateView, EntryDeleteView, EntryDetailView,
-                         EntryListView, EntryUpdateView, Index, entry_search)
+                         EntryListView, EntryUpdateView, Index, EntrySearchView)
 
 app_name = DiaryConfig.name
 
@@ -18,5 +18,5 @@ urlpatterns = [
         name="entry_detail",
     ),
     path("entry/delete/<int:pk>/", EntryDeleteView.as_view(), name="entry_delete"),
-    path("search/", entry_search, name="entry_search"),
+    path("search/", EntrySearchView.as_view(), name="entry_search"),
 ]

@@ -1,6 +1,5 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import render
+from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   TemplateView, UpdateView)
@@ -17,6 +16,24 @@ class Index(TemplateView):
 class EntryListView(LoginRequiredMixin, ListView):
     model = Entry
     context_object_name = "entry_list"
+    template_name = "diary/entry_list.html"
+
+    def get_queryset(self):
+        return Entry.objects.filter(owner=self.request.user)
+
+
+class EntrySearchView(LoginRequiredMixin, ListView):
+    model = Entry
+    context_object_name = "entry_list"
+    template_name = "diary/search_entries_list.html"
+
+    def get_queryset(self):
+        query = self.request.GET.get("query", "")
+        if query:
+            # Фильтруем записи по вхождению текста в заголовок или текст записи
+            return Entry.objects.filter(Q(title__icontains=query) | Q(text__icontains=query),
+                                        owner=self.request.user)
+        return Entry.objects.none()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -63,17 +80,3 @@ class EntryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user.is_superuser:
             return True
         return self.request.user == entry.owner
-
-
-@login_required
-def entry_search(request):
-    query = request.GET.get("query", "")
-    if query:
-        search_list = Entry.objects.filter(
-            title__icontains=query
-        ) | Entry.objects.filter(text__icontains=query)
-    else:
-        search_list = Entry.objects.none()
-    return render(
-        request, "diary/entry_list.html", {"entry_list": search_list, "query": query}
-    )

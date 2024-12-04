@@ -10,13 +10,13 @@
             <a href="{% url 'diary:entry_detail' entry.pk %}" class="card-link">
                 <div class="card mb-2 rounded-5 shadow-sm" style="overflow: hidden;">
                     <div class="card-header py-3" style="border-radius: 0.5rem 0.5rem 0 0;">
-                        <h6 class="my-0 fw-normal text-uppercase">{{ entry.title }}</h6>
+                        <h6 class="my-0 fw-normal text-uppercase">{{ entry.title|highlight:query|safe }}</h6>
                     </div>
                     <div class="card-body">
                         <h6 class="card-title pricing-card-title"
                             style="font-size: 0.95rem; font-weight: normal;
                                    text-align: left; margin: 0 0 1rem 0; text-indent: 1rem;">
-                            {{ entry.text|slice:':201' }}...</h6>
+                            {{ entry.text|highlight:query|slice:':201'|safe }}...</h6>
                         <ul class="list-unstyled mt-2 mb-2" style="font-size: 0.9rem;">
                             <li>Author: {{ entry.owner }}</li>
                         </ul>
@@ -37,7 +37,7 @@
         </div>
         {% empty %}
         <div class="empty-message-container">
-            <p>No entries yet</p>
+            <p>No entries found</p>
         </div>
         {% endfor %}
     </div>

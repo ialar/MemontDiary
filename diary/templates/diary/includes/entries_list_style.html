@@ -1,0 +1,51 @@
+<style>
+    .row {
+        display: flex; /* Используем Flexbox для размещения карточек */
+        flex-wrap: wrap; /* Позволяем карточкам переноситься на следующую строку */
+    }
+
+    .custom-col {
+        display: flex; /* Используем Flexbox внутри колонки */
+        flex-direction: column; /* Устанавливаем вертикальное размещение элементов */
+        justify-content: stretch; /* Позволяем карточкам занимать всю доступную высоту */
+        padding: 1rem; /* Устанавливаем отступы между карточками */
+    }
+
+    .card {
+        transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход */
+        height: 100%; /* Устанавливаем фиксированную высоту карточки */
+        width: 100%; /* Устанавливаем ширину на 100% */
+        box-sizing: border-box; /* Учитываем отступы и границы в ширине */
+    }
+
+    .card:hover {
+        background-color: #343a40; /* Цвет фона при наведении (темный) */
+        color: white; /* Цвет текста при наведении (белый) */
+    }
+
+    .card-link {
+        text-decoration: none; /* Убираем подчеркивание текста */
+        color: inherit; /* Убираем изменение цвета текста по умолчанию */
+        height: 100%; /* Устанавливаем высоту на 100% */
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column; /* Устанавливаем вертикальное размещение элементов */
+        flex-grow: 1; /* Позволяем телу карточки занимать доступное пространство */
+    }
+
+    .icon-small {
+        font-size: 0.75rem; /* Уменьшаем размер иконки */
+    }
+    .highlight {
+        background-color: rgba(180, 210, 250, 0.5); /* Полупрозрачный синий цвет для подсветки поиска */
+    }
+    .empty-message-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75vh;
+        text-align: center;
+    }
+</style>
