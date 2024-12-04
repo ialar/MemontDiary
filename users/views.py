@@ -47,7 +47,7 @@ class LoginRequiredTemplateView(TemplateView):
     template_name = "users/login_required.html"
 
 
-def confirm_register(code):
+def confirm_register(request, code):
     user = get_object_or_404(User, verification_code=code)
     user.is_active = True
     user.save()
