@@ -14,8 +14,8 @@ from diary.services import get_cache_for_entries_count
 class Index(TemplateView):
     model = Entry
     template_name = "diary/index.html"
-    extra_context = {'slogan': 'Memont - memorize your moments.',
-                     'intro_text': 'Inspire by entries of our community.'}
+    extra_context = {"slogan": "Memont - memorize your moments.",
+                     "intro_text": "Be inspired by \'memonts\' from community."}
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)

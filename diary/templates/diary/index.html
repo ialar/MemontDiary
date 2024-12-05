@@ -2,40 +2,48 @@
 {% load my_tags %}
 
 {% block content %}
-<div class="d-flex flex-column align-items-center justify-content-center" style="height: 20vh; text-align: center;">
-    <h5>{{ slogan }}</h5>
-    <hr class="my-2" style="width: 25%; border-top: 1px solid #ccc;">
-    <h5>{{ intro_text }}</h5>
+<div class="d-flex flex-column align-items-center justify-content-center" style="height: 25vh; text-align: center;">
+    <div class="text-center"
+         style="font-size: 2rem; font-family: 'Lato', sans-serif; font-weight: 300;">
+        {{ slogan }}
+        <br>
+        {{ intro_text }}
+    </div>
 </div>
 <div class="container">
-    <div class="row text-start justify-content-center">
-        <div class="col-4">
-            <div class="p-3 p-md-3 mb-3 rounded text-body-emphasis bg-body-secondary">
-                <p class="h6 text-center lead my-2">Общее количество записей: <b>{{ total_entries_count|default:0 }}</b></p>
-                <p class="h6 text-center lead my-1">Количество публичных записей: <b>{{ public_entries_count|default:0 }}</b></p>
-                <p class="h6 text-center lead my-1">Количество личных записей: <b>{{ personal_entries_count|default:0 }}</b></p>
+    <div class="row row-cols-1 row-cols-md-3 g-5 text-center">
+        {% for entry in public_entries_list %}
+        <div class="col">
+            <div class="card rounded-3 shadow-sm h-100">
+                <div class="card-header py-3">
+                    <h5 class="my-0 fw-normal text-uppercase">{{ entry.title }}</h5>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <ul class="list-unstyled mt-2 mb-2">
+                        <li>{{ entry.text|slice:':201' }} ...</li>
+                        <li>{{ entry.owner }}</li>
+                        <li>Дата публикации: {{ entry.created_at }}</li>
+                    </ul>
+                    <div class="mt-auto">
+                        <a class="btn btn-outline-secondary rounded w-50 m-2"
+                           href="{% url 'diary:entry_detail' entry.pk %}">View</a>
+                    </div>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-4">
-    {% for entry in public_entries_list %}
-    <div class="col-4">
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
-                <h5 class="my-0 fw-normal">{{ entry.title }}</h5>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>{{ entry.text|slice:':201' }} ...</li>
-                    <li>{{ entry.owner }}</li>
-                    <li>Дата публикации: {{ entry.created_at }}</li>
-                </ul>
-                <a class="w-50 btn btn-lg btn-outline-primary m-1"
-                   href="{% url 'diary:entry_detail' entry.pk %}">View</a>
+<div class="container mt-5">
+    <div class="row text-start justify-content-center">
+        <div class="col-3">
+            <div class="p-1 mb-4 rounded text-body-emphasis bg-body-secondary">
+                <p class="text-center my-1 small text-muted">
+                    TOTAL ENTRY'S COUNT - <b>{{ total_entries_count|default:0 }}</b><br>
+                    <b>({{ public_entries_count|default:0 }}</b> PUBLIC /
+                    <b>{{ personal_entries_count|default:0 }}</b> PERSONAL)</p>
             </div>
         </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
