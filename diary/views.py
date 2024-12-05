@@ -1,3 +1,5 @@
+import random
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.urls import reverse_lazy
@@ -6,11 +8,23 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
 
 from diary.forms import EntryForm
 from diary.models import Entry
+from diary.services import get_cache_for_entries_count
 
 
 class Index(TemplateView):
     model = Entry
     template_name = "diary/index.html"
+    extra_context = {'title': 'Memont - memorize your moments.'}
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['total_entries_count'] = get_cache_for_entries_count
+        context_data['public_entries_count'] = Entry.objects.filter(is_public=True).count()
+        context_data['personal_entries_count'] = Entry.objects.filter(is_public=False).count()
+        public_entries_list = list(Entry.objects.filter(is_public=True))
+        random.shuffle(public_entries_list)
+        context_data['public_entries_list'] = public_entries_list[:3]
+        return context_data
 
 
 class EntryListView(LoginRequiredMixin, ListView):
