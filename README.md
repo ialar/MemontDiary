@@ -39,6 +39,10 @@ Inspired by https://dayone.me
 5. **Кэш:** 
    - В приложении дневника реализовано кэширование детального просмотра записей, а также низкоуровневое кэширование счетчика количества записей.
 
+### Уровень тестирования:
+
+Приложение покрыто тестами на 91%.
+
 ### Требования
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
@@ -61,7 +65,7 @@ docker-compose up -d --build
 ### Создание суперпользователя
 Чтобы создать суперпользователя, выполните команду:
 ```bash
-docker-compose exec <container_name_or_id> python manage.py csu
+docker-compose exec memont_diary python manage.py csu
 ```
 
 ### Наполнение БД
@@ -69,6 +73,20 @@ docker-compose exec <container_name_or_id> python manage.py csu
 ```bash
 docker-compose exec memont_diary python manage.py loaddata fixtures/users.json
 docker-compose exec memont_diary python manage.py loaddata fixtures/diary.json
+```
+
+### Запуск тестов
+Для запуска тестов выполните следующую команду:
+```bash
+docker-compose exec memont_diary coverage run -m manage.py test
+```
+После завершения тестов вы можете получить отчет о покрытии, выполнив:
+```bash
+docker-compose exec memont_diary coverage report
+```
+Для создания HTML-отчета о покрытии:
+```bash
+docker-compose exec memont_diary coverage html
 ```
 
 ### Доступ и работа с приложением
