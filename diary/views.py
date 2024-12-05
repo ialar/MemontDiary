@@ -88,7 +88,7 @@ class EntryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class EntryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Entry
-    success_url = reverse_lazy("diary:entry_detail")
+    success_url = reverse_lazy("diary:entry_list")
 
     def test_func(self):
         entry = self.get_object()
