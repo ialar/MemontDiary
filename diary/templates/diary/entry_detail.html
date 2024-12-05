@@ -9,13 +9,13 @@
                 <div class="card-header">
                     <h6 class="my-0 font-weight-normal text-center">{{ entry.title }}</h6>
                 </div>
-                {% if object.image %}
+                {% if entry.image %}
                 <img class="card-img-top" src="{% my_media_tag entry.image %}" alt="Card image cap">
                 {% endif %}
                 <div class="card-body">
                     <p>{{ entry.text }}</p>
                     <div class="d-flex justify-content-center">
-                        <div class="d-flex" style="width: 100%;">
+                        <div class="d-flex justify-content-center" style="width: 100%;">
                             {% if user.is_superuser or user == entry.owner %}
                             <a href="{% url 'diary:entry_update' entry.pk %}" type="button"
                                class="btn btn-outline-secondary rounded w-25 me-3">Edit</a>

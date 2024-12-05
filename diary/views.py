@@ -15,7 +15,7 @@ class Index(TemplateView):
     model = Entry
     template_name = "diary/index.html"
     extra_context = {"slogan": "Memont - memorize your moments.",
-                     "intro_text": "Be inspired by \'memonts\' from community."}
+                     "intro_text": "Be inspired by \'memonts\' from community:"}
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -88,7 +88,7 @@ class EntryUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class EntryDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Entry
-    success_url = reverse_lazy("diary:entry_list")
+    success_url = reverse_lazy("diary:entry_detail")
 
     def test_func(self):
         entry = self.get_object()
