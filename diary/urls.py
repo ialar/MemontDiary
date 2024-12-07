@@ -3,7 +3,8 @@ from django.views.decorators.cache import cache_page
 
 from diary.apps import DiaryConfig
 from diary.views import (EntryCreateView, EntryDeleteView, EntryDetailView,
-                         EntryListView, EntryUpdateView, Index, EntrySearchView)
+                         EntryListView, EntrySearchView, EntryUpdateView,
+                         Index)
 
 app_name = DiaryConfig.name
 

@@ -14,17 +14,23 @@ from diary.services import get_cache_for_entries_count
 class Index(TemplateView):
     model = Entry
     template_name = "diary/index.html"
-    extra_context = {"slogan": "Memont - memorize your moments.",
-                     "intro_text": "Be inspired by \'memonts\' from community:"}
+    extra_context = {
+        "slogan": "Memont - memorize your moments.",
+        "intro_text": "Be inspired by 'memonts' from community:",
+    }
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        context_data['total_entries_count'] = get_cache_for_entries_count
-        context_data['public_entries_count'] = Entry.objects.filter(is_public=True).count()
-        context_data['personal_entries_count'] = Entry.objects.filter(is_public=False).count()
+        context_data["total_entries_count"] = get_cache_for_entries_count
+        context_data["public_entries_count"] = Entry.objects.filter(
+            is_public=True
+        ).count()
+        context_data["personal_entries_count"] = Entry.objects.filter(
+            is_public=False
+        ).count()
         public_entries_list = list(Entry.objects.filter(is_public=True))
         random.shuffle(public_entries_list)
-        context_data['public_entries_list'] = public_entries_list[:3]
+        context_data["public_entries_list"] = public_entries_list[:3]
         return context_data
 
 
@@ -46,8 +52,10 @@ class EntrySearchView(LoginRequiredMixin, ListView):
         query = self.request.GET.get("query", "")
         if query:
             # Фильтруем записи по вхождению текста в заголовок или текст записи
-            return Entry.objects.filter(Q(title__icontains=query) | Q(text__icontains=query),
-                                        owner=self.request.user)
+            return Entry.objects.filter(
+                Q(title__icontains=query) | Q(text__icontains=query),
+                owner=self.request.user,
+            )
         return Entry.objects.none()
 
     def get_context_data(self, **kwargs):
