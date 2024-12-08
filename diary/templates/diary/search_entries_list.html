@@ -16,7 +16,7 @@
                         <h6 class="card-title pricing-card-title"
                             style="font-size: 0.95rem; font-weight: normal;
                                    text-align: left; margin: 0 0 1rem 0; text-indent: 1rem;">
-                            {{ entry.text|highlight:query|slice:':201'|safe }}...</h6>
+                            {{ entry.text|highlight:query|safe }}...</h6>
                         <ul class="list-unstyled mt-2 mb-2" style="font-size: 0.9rem;">
                             <li>Author: {{ entry.owner }}</li>
                         </ul>
